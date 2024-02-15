@@ -1,20 +1,16 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Dashboard from '../components/Dashboard';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from '../components/Login';
-import CreatePost from '../components/CreatePost';
-import EditPost from '../components/EditPost';
+import Dashboard from '../components/Dashboard';
+import PostEditor from '../components/PostEditor';
 
-const Routes = () => (
-  <Router>
-    <Switch>
-      <Route exact path="/blog/admin/login" component={Login} />
-      <Route exact path="/blog/admin/dashboard" component={Dashboard} />
-      <Route exact path="/blog/admin/create" component={CreatePost} />
-      <Route exact path="/blog/admin/edit/:id" component={EditPost} />
-      <Route path="*" component={() => "404 NOT FOUND"} />
-    </Switch>
-  </Router>
+const AppRoutes = () => (
+    <Router basename="/blog/admin">
+        <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/post-editor" element={<PostEditor />} />
+        </Routes>
+    </Router>
 );
 
-export default Routes;
+export default AppRoutes;
