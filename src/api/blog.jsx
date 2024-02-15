@@ -22,20 +22,28 @@ export const getPost = async (id) => {
 
 export const createPost = async (formData) => {
     try {
-        const response = await fetch(`${url}/blog/posts`, {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        });
-        const data = await response.json();
+      const response = await fetch(`${url}/blog/posts`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
         return data;
+      }
+  
+      throw new Error(data.message);
     } catch (error) {
-        console.error(error);
+      console.error(error);
+      return null;
     }
-}
+  };
 
 export const updatePost = async (id, formData) => {
     try {
@@ -103,17 +111,19 @@ export const getComments = async (id) => {
     }
 }
 
-export const createComment = async (id, formData) => {
+export const createComment = async ( id, content) => {
     try {
         const response = await fetch(`${url}/blog/posts/${id}/comments`, {
             method: 'POST',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
             },
-            body: JSON.stringify(formData),
+            body: JSON.stringify({content}),
         });
         const data = await response.json();
+        console.log(data);
         return data;
     } catch (error) {
         console.error(error);
