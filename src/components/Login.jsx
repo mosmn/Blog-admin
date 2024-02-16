@@ -1,6 +1,21 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../api/auth';
+import styled from 'styled-components';
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  height: 100vh;
+`;
+
+const StyledInput = styled.input`
+  padding: 0.5rem;
+  font-size: 1rem;
+`;
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -19,15 +34,15 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <StyledForm onSubmit={handleSubmit}>
+      <StyledInput
         type="text"
         value={username}
         onChange={e => setUsername(e.target.value)}
         placeholder="Username"
         required
       />
-      <input
+      <StyledInput
         type="password"
         value={password}
         onChange={e => setPassword(e.target.value)}
@@ -35,7 +50,7 @@ const Login = () => {
         required
       />
       <button type="submit">Login</button>
-    </form>
+    </StyledForm>
   );
 };
 
