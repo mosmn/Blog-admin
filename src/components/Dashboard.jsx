@@ -60,32 +60,31 @@ const NavButton = styled.button`
 `;
 
 export const PostContainer = styled.div`
-    border: none;
-    border-bottom: 1px solid #ded9d3;
-    gap: 0rem;
+  border: none;
+  border-bottom: 1px solid #ded9d3;
+  gap: 0rem;
 `;
 
 export const Post = styled.div`
   display: flex;
   justify-content: space-between;
-  
   padding: 1rem;
   border-bottom: 1px solid #ded9d3;
   width: 100%;
 `;
 
 export const DeleteButton = styled.button`
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    
-    &:hover {
-        background-color: #b02a37;
-    }
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #b02a37;
+  }
 `;
 
 const Dashboard = () => {
