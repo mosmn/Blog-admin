@@ -7,7 +7,7 @@ const AppRoutes = () => (
     <Router basename="/blog/admin">
         <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/*" element={<Dashboard />} />
         <Route path="/post-editor" element={<PostEditor />} />
         </Routes>
     </Router>
