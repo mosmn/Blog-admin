@@ -1,12 +1,12 @@
-const url = 'http://localhost:3000';
-    
+const url = "http://localhost:3000";
+
 export const login = async (formData) => {
   try {
     const response = await fetch(`${url}/auth/login`, {
-      method: 'POST',
-      mode: 'cors',
+      method: "POST",
+      mode: "cors",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
     });
@@ -14,7 +14,7 @@ export const login = async (formData) => {
     const data = await response.json();
 
     if (response.ok) {
-      localStorage.setItem('token', data.token);
+      localStorage.setItem("token", data.token);
       return data.payload;
     }
 
