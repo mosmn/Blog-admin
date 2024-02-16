@@ -29,6 +29,11 @@ const ContentContainer = styled.div`
   padding: 1rem;
   width: 60%;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    width: 95%;
+  }
+
 `;
 
 const NavCont = styled.div`
