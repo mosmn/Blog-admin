@@ -8,7 +8,9 @@ const AppRoutes = () => (
         <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/dashboard/*" element={<Dashboard />} />
-        <Route path="/post-editor" element={<PostEditor />} />
+        <Route path="/post-editor" element={<PostEditor />}>
+            <Route path=":id" element={<PostEditor />} />
+        </Route>
         </Routes>
     </Router>
 );
