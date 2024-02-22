@@ -52,6 +52,7 @@ export const updatePost = async (id, formData) => {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(formData),
     });
@@ -67,6 +68,9 @@ export const deletePost = async (id) => {
     const response = await fetch(`${url}/blog/posts/${id}`, {
       method: "DELETE",
       mode: "cors",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
     });
     const data = await response.json();
     return data;
@@ -170,43 +174,4 @@ export const unlikeComment = async (id) => {
   } catch (error) {
     console.error(error);
   }
-};
-
-export const register = async (formData) => {
-  try {
-    const response = await fetch(`${url}/auth/register`, {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-export const login = async (formData) => {
-  try {
-    const response = await fetch(`${url}/auth/login`, {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    const data = await response.json();
-    localStorage.setItem("token", data.token);
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-export const logout = () => {
-  localStorage.removeItem("token");
 };
