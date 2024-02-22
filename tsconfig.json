@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx", // Add this line
+    "lib": ["dom", "dom.iterable", "esnext"] // Add this line
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx", // Add this line to include TypeScript JSX files
+    "src/components/PostEditor.tsx"
+  ],
+  "exclude": ["node_modules"]
+}
