@@ -71,8 +71,8 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-
 `;
+
 
 const App = () => (
   <div>
