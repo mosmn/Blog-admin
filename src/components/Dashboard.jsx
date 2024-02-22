@@ -33,7 +33,6 @@ const ContentContainer = styled.div`
   @media (max-width: 768px) {
     width: 95%;
   }
-
 `;
 
 const NavCont = styled.div`
@@ -90,6 +89,21 @@ export const DeleteButton = styled.button`
   &:hover {
     background-color: #b02a37;
   }
+`;
+
+export const ErrorPreventionCard = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  border: 1px solid #ded9d3;
+  border-radius: 0.25rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 `;
 
 const Dashboard = () => {
