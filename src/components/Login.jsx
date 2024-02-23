@@ -10,6 +10,22 @@ const StyledForm = styled.form`
   align-items: center;
   gap: 1rem;
   height: 100vh;
+
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #231f20;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    min-width: 140px;
+
+    &:hover {
+      background-color: #ded9d3;
+      color: #231f20;
+    }
+  }
 `;
 
 const StyledInput = styled.input`
