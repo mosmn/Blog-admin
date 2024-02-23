@@ -29,6 +29,14 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  h1 {
+    font-size: 2.5rem;
+
+    @media (max-width: 768px) {
+      font-size: 1.8rem;
+    }
+  }
+
   button {
     padding: 0.5rem 1rem;
     font-size: 1rem;
