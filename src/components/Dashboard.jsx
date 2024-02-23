@@ -9,6 +9,10 @@ const DashboardContainer = styled.div`
   flex-direction: column;
   background-color: #f8f9fa;
   height: 100vh;
+
+  @media (max-width: 768px) {
+    height: 100%;
+  }
 `;
 
 const Headerbar = styled.div`
@@ -16,6 +20,10 @@ const Headerbar = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+  }
 `;
 
 const TopRight = styled.div`
@@ -27,7 +35,7 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  width: 60%;
+  width: 80%;
   margin: 0 auto;
 
   @media (max-width: 768px) {
@@ -75,6 +83,15 @@ export const Post = styled.div`
   padding: 1rem;
   border-bottom: 1px solid #ded9d3;
   width: 100%;
+  max-width: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    
+    button {
+      margin-top: 1rem;
+    }
+  }
 `;
 
 export const DeleteButton = styled.button`
@@ -91,19 +108,36 @@ export const DeleteButton = styled.button`
   }
 `;
 
+export const Backdrop = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+`;
+
 export const ErrorPreventionCard = styled.div`
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 2rem;
   border: 1px solid #ded9d3;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
+  z-index: 1000;
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+  }
+
 `;
 
 const Dashboard = () => {
