@@ -7,15 +7,40 @@ import '../styles/globals.css';
 import styled from 'styled-components';
 import loadingSpinner from '../assets/loading.gif';
 
-const PlateEditorStyled = styled.div`
-  margin: 2rem;
-`;
-
 const Wrapper = styled.div`
-  margin-top: 4rem;
+  margin: 3rem 3.5rem;
+
+  input {
+    background-color: #f8f9fa;
+    border: none;
+    width: 100%;
+    padding: 1rem;
+    font-size: 4rem;
+    
+  }
+
+  input::placeholder {
+    font-size: 4rem;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  @media (max-width: 768px) {
+    margin: 1rem 1.5rem;
+
+    input {
+      font-size: 2rem;
+    }
+
+    input::placeholder {
+      font-size: 2rem;
+    }
+  }
 `;
 
-export const Loading = styled.div`
+const Loading = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,6 +75,10 @@ const PostEditor = () => {
 
   const handlePublish = async () => {
     let data;
+    if (title === '') {
+      setTitle('Untitled');
+    }
+
     if (id) {
       data = await updatePost(id, { title, content, published: true });
     } else {
@@ -65,6 +94,10 @@ const PostEditor = () => {
 
   const handleSave = async () => {
     let data;
+    if (title === '') {
+      setTitle('Untitled');
+    }
+
     if (id) {
       data = await updatePost(id, { title, content, published: false });
     } else {
@@ -84,19 +117,16 @@ const PostEditor = () => {
 
   return (
     <Wrapper>
-      <h1>Create a new post</h1>
       <div>
-        <label htmlFor="title">Title</label>
         <input
           type="text"
           id="title"
           value={title}
+          placeholder="Enter title"
           onChange={(event) => setTitle(event.target.value)}
         />
       </div>
       <div>
-        <label htmlFor="content">Content</label>
-        <PlateEditorStyled>
           <TooltipProvider
             disableHoverableContent
             delayDuration={500}
@@ -104,7 +134,6 @@ const PostEditor = () => {
           >
             <PlateEditor value={content} setValue={setContent} />
           </TooltipProvider>
-        </PlateEditorStyled>
       </div>
       <button onClick={handlePublish}>Publish</button>
       <button onClick={handleSave}>Save</button>
