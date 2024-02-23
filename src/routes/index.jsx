@@ -1,14 +1,24 @@
-import { BrowserRouter as Router, Routes, Route, Redirect} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Login from "../components/Login";
 import Dashboard from "../components/Dashboard";
 import PostEditor from "../components/PostEditor";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+function RedirectToDrafts() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate('/blog/admin/dashboard/drafts');
+  }, [navigate]);
+
+  return null;
+}
+
 
 const AppRoutes = () => (
   <Router basename="/blog/admin">
     <Routes>
-    <Route exact path="/">
-        <Redirect to="/blog/admin/dashboard/drafts" />
-      </Route>
+    <Route path="/" element={<RedirectToDrafts />} />
       <Route path="/" element={<Login />} />
       <Route path="/dashboard/*" element={<Dashboard />} />
       <Route path="/post-editor" element={<PostEditor />}>
