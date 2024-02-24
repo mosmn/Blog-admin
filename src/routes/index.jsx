@@ -24,6 +24,7 @@ const AppRoutes = () => (
       <Route path="/post-editor" element={isLoggedIn() ? <PostEditor /> : <Navigate to="/" />} >
         <Route path=":id" element={<PostEditor />} />
       </Route>
+      <Route path="*" element={<h1>404 Not Found</h1>} />
     </Routes>
   </Router>
 );
