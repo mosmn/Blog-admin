@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../api/auth";
 import styled from "styled-components";
@@ -37,6 +37,14 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/dashboard/drafts");
+    }
+  }, [navigate]);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
