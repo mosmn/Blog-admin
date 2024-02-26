@@ -87,7 +87,7 @@ export const Post = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    
+
     button {
       margin-top: 1rem;
     }
@@ -137,7 +137,6 @@ export const ErrorPreventionCard = styled.div`
     display: flex;
     gap: 1rem;
   }
-
 `;
 
 const Dashboard = () => {
