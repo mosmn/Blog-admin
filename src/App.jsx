@@ -81,7 +81,6 @@ const GlobalStyle = createGlobalStyle`
 
 `;
 
-
 const App = () => (
   <div>
     <GlobalStyle />
