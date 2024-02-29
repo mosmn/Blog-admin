@@ -1,5 +1,5 @@
 // Drafts.jsx
-import Posts from './Posts';
+import Posts from "./Posts";
 
 const Drafts = () => {
   return <Posts filterCondition={(post) => !post.published} />;
