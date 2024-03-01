@@ -45,7 +45,6 @@ const Login = () => {
     }
   }, [navigate]);
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = await login({ username, password });
