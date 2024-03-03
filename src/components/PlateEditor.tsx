@@ -1,11 +1,7 @@
 "use client";
 
-import {
-  Plate,
-} from "@udecode/plate-common";
-import {
-  CommentsProvider,
-} from "@udecode/plate-comments";
+import { Plate } from "@udecode/plate-common";
+import { CommentsProvider } from "@udecode/plate-comments";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
@@ -52,15 +48,15 @@ const initialValue = [
   },
 ];
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const ToolbarStyle = styled.div`
-button {
-  background-color: transparent;
-  border: 1px solid #231F20;
-  cursor: pointer;
-  min-width: 20px;
-}
+  button {
+    background-color: transparent;
+    border: 1px solid #231f20;
+    cursor: pointer;
+    min-width: 20px;
+  }
 `;
 
 export function PlateEditor({
@@ -70,15 +66,13 @@ export function PlateEditor({
   setValue: Function;
   value: any;
 }) {
-
   useEffect(() => {
     if (value.length === 0) {
       setValue(JSON.stringify(initialValue, null, 2));
     } else {
       setValue(JSON.stringify(value, null, 2));
     }
-  }
-  , []);
+  }, []);
 
   const handleOnChange = (
     value: { id: string; type: string; children: { text: string }[] }[],
@@ -90,19 +84,19 @@ export function PlateEditor({
   return (
     <DndProvider backend={HTML5Backend}>
       <CommentsProvider users={{}} myUserId="1">
-        <Plate plugins={plugins} initialValue={value.length === 0 ? initialValue : value} onChange={handleOnChange}>
-          
+        <Plate
+          plugins={plugins}
+          initialValue={value.length === 0 ? initialValue : value}
+          onChange={handleOnChange}
+        >
           <FixedToolbar>
             <FixedToolbarButtons />
           </FixedToolbar>
-          
 
           <Editor />
 
           <FloatingToolbar>
-          
             <FloatingToolbarButtons />
-            
           </FloatingToolbar>
           <MentionCombobox items={[]} />
           <CommentsPopover />
