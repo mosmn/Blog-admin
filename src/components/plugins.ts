@@ -100,10 +100,7 @@ import { createResetNodePlugin } from "@udecode/plate-reset-node";
 import { createDeletePlugin } from "@udecode/plate-select";
 import { createTabbablePlugin } from "@udecode/plate-tabbable";
 import { createTrailingBlockPlugin } from "@udecode/plate-trailing-block";
-import {
-  createCommentsPlugin,
-  MARK_COMMENT,
-} from "@udecode/plate-comments";
+import { createCommentsPlugin, MARK_COMMENT } from "@udecode/plate-comments";
 import { createDeserializeDocxPlugin } from "@udecode/plate-serializer-docx";
 import { createDeserializeCsvPlugin } from "@udecode/plate-serializer-csv";
 import { createDeserializeMdPlugin } from "@udecode/plate-serializer-md";
@@ -139,7 +136,7 @@ import { KbdLeaf } from "@/components/plate-ui/kbd-leaf";
 import { withPlaceholders } from "@/components/plate-ui/placeholder";
 import { withDraggables } from "@/components/plate-ui/with-draggables";
 
- const plugins = createPlugins(
+const plugins = createPlugins(
   [
     createParagraphPlugin(),
     createHeadingPlugin(),
