@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { createPost, getPost, updatePost } from '../api/blog';
-import { PlateEditor } from './PlateEditor';
-import { TooltipProvider } from '@/components/plate-ui/tooltip';
-import '../styles/globals.css';
-import styled from 'styled-components';
-import loadingSpinner from '../assets/loading.gif';
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { createPost, getPost, updatePost } from "../api/blog";
+import { PlateEditor } from "./PlateEditor";
+import { TooltipProvider } from "@/components/plate-ui/tooltip";
+import "../styles/globals.css";
+import styled from "styled-components";
+import loadingSpinner from "../assets/loading.gif";
 
 const Wrapper = styled.div`
   margin: 3rem 3.5rem;
@@ -16,7 +16,6 @@ const Wrapper = styled.div`
     width: 100%;
     padding: 1rem;
     font-size: 4rem;
-    
   }
 
   input::placeholder {
@@ -54,7 +53,7 @@ const Loading = styled.div`
 `;
 
 const PostEditor = () => {
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
   const [content, setContent] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -75,8 +74,8 @@ const PostEditor = () => {
 
   const handlePublish = async () => {
     let data;
-    if (title === '') {
-      setTitle('Untitled');
+    if (title === "") {
+      setTitle("Untitled");
     }
 
     if (id) {
@@ -86,16 +85,16 @@ const PostEditor = () => {
     }
 
     if (data) {
-      navigate('/dashboard/published');
+      navigate("/dashboard/published");
     } else {
-      alert('An error occurred while creating the post');
+      alert("An error occurred while creating the post");
     }
   };
 
   const handleSave = async () => {
     let data;
-    if (title === '') {
-      setTitle('Untitled');
+    if (title === "") {
+      setTitle("Untitled");
     }
 
     if (id) {
@@ -105,14 +104,18 @@ const PostEditor = () => {
     }
 
     if (data) {
-      navigate('/dashboard/drafts');
+      navigate("/dashboard/drafts");
     } else {
-      alert('An error occurred while saving the post');
+      alert("An error occurred while saving the post");
     }
   };
 
   if (id && loading) {
-    return <Loading><img src={loadingSpinner} alt="loading" /></Loading>;
+    return (
+      <Loading>
+        <img src={loadingSpinner} alt="loading" />
+      </Loading>
+    );
   }
 
   return (
@@ -127,13 +130,13 @@ const PostEditor = () => {
         />
       </div>
       <div>
-          <TooltipProvider
-            disableHoverableContent
-            delayDuration={500}
-            skipDelayDuration={0}
-          >
-            <PlateEditor value={content} setValue={setContent} />
-          </TooltipProvider>
+        <TooltipProvider
+          disableHoverableContent
+          delayDuration={500}
+          skipDelayDuration={0}
+        >
+          <PlateEditor value={content} setValue={setContent} />
+        </TooltipProvider>
       </div>
       <button onClick={handlePublish}>Publish</button>
       <button onClick={handleSave}>Save</button>
