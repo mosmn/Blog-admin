@@ -1,5 +1,5 @@
 // Published.jsx
-import Posts from './Posts';
+import Posts from "./Posts";
 
 const Published = () => {
   return <Posts filterCondition={(post) => post.published} />;
