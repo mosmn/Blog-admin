@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getPosts, deletePost } from "../api/blog";
-import { PostContainer, Post, DeleteButton, ErrorPreventionCard, Backdrop } from "./Dashboard";
-import { Plate } from '@udecode/plate-core';
+import {
+  PostContainer,
+  Post,
+  DeleteButton,
+  ErrorPreventionCard,
+  Backdrop,
+} from "./Dashboard";
+import { Plate } from "@udecode/plate-core";
 import { Displayer } from "@/components/plate-ui/displayer";
-import loadingSpinner from '../assets/loading.gif';
-import styled from 'styled-components';
+import loadingSpinner from "../assets/loading.gif";
+import styled from "styled-components";
 import plugins from "./plugins";
 
 const Loading = styled.div`
@@ -43,14 +49,13 @@ const Posts = ({ filterCondition }) => {
     fetchPosts();
   }, [filterCondition]);
 
-
-useEffect(() => {
-  if (postToDelete) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = 'auto';
-  }
-}, [postToDelete]);
+  useEffect(() => {
+    if (postToDelete) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [postToDelete]);
 
   const handleEdit = (id) => {
     try {
@@ -64,7 +69,9 @@ useEffect(() => {
     try {
       if (postToDelete) {
         await deletePost(postToDelete);
-        setPosts(prevPosts => prevPosts.filter(post => post._id !== postToDelete));
+        setPosts((prevPosts) =>
+          prevPosts.filter((post) => post._id !== postToDelete),
+        );
         setPostToDelete(null);
       }
     } catch (err) {
@@ -73,8 +80,8 @@ useEffect(() => {
   };
 
   const toggleExpansion = (index) => {
-    setExpandedPosts(prevState =>
-      prevState.map((expanded, i) => (i === index ? !expanded : expanded))
+    setExpandedPosts((prevState) =>
+      prevState.map((expanded, i) => (i === index ? !expanded : expanded)),
     );
   };
 
@@ -102,34 +109,38 @@ useEffect(() => {
             <div style={{ display: "flex", flexDirection: "column" }}>
               <h1>{post.title}</h1>
               <p>{new Date(post.createdAt).toLocaleString()}</p>
-              <div >{renderContent(post.content, index)}</div>
+              <div>{renderContent(post.content, index)}</div>
               <div onClick={() => toggleExpansion(index)}>
-                {expandedPosts[index] ? '...read less' : '...read more'}
+                {expandedPosts[index] ? "...read less" : "...read more"}
               </div>
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <button onClick={() => handleEdit(post._id)}> Edit</button>
-              <DeleteButton onClick={() => displayErrorPreventionCard(post._id)}>
+              <DeleteButton
+                onClick={() => displayErrorPreventionCard(post._id)}
+              >
                 Delete
               </DeleteButton>
             </div>
-            { postToDelete === post._id && (
+            {postToDelete === post._id && (
               <Backdrop onClick={() => setPostToDelete(null)}>
-              <ErrorPreventionCard>
-                <h2>Are you sure you want to delete this post?</h2>
-                <div className="actions">
-                  <button onClick={() => setPostToDelete(null)}>
-                    Cancel
-                  </button>
-                  <button onClick={handleDelete}>Delete</button>
-                </div>
-              </ErrorPreventionCard>
-            </Backdrop>
+                <ErrorPreventionCard>
+                  <h2>Are you sure you want to delete this post?</h2>
+                  <div className="actions">
+                    <button onClick={() => setPostToDelete(null)}>
+                      Cancel
+                    </button>
+                    <button onClick={handleDelete}>Delete</button>
+                  </div>
+                </ErrorPreventionCard>
+              </Backdrop>
             )}
           </Post>
         ))
       ) : (
-        <Loading><img src={loadingSpinner} alt="loading" /></Loading>
+        <Loading>
+          <img src={loadingSpinner} alt="loading" />
+        </Loading>
       )}
     </PostContainer>
   );
