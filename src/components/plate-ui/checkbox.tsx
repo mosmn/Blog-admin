@@ -5,7 +5,7 @@ import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { cn, withRef } from "@udecode/cn";
 
 import { Icons } from "@/components/icons";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledCheckbox = styled(CheckboxPrimitive.Root)`
   min-width: 1.2rem;
