@@ -5,19 +5,20 @@ import { cva } from "class-variance-authority";
 
 import type { PlateContentProps } from "@udecode/plate-common";
 import type { VariantProps } from "class-variance-authority";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const PlateContentStyledDisplayer = styled(PlateContent)`
-height: ${props => props.isExpanded ? 'auto' : '300px'};
-width: 100%; // This line makes the width of PlateContentStyledDisplayer flexible
-max-width: 100%; // This line ensures that the width of PlateContentStyledDisplayer never exceeds its parent's width
+  height: ${(props) => (props.isExpanded ? "auto" : "300px")};
+  width: 100%; // This line makes the width of PlateContentStyledDisplayer flexible
+  max-width: 100%; // This line ensures that the width of PlateContentStyledDisplayer never exceeds its parent's width
   padding: 10px;
   background-color: #f8f9fa;
   border: none;
   overflow: hidden;
-    @media (max-width: 768px) { // this will apply to screens that are 768px or less
+  @media (max-width: 768px) {
+    // this will apply to screens that are 768px or less
     padding: 30px 20px;
-    }
+  }
 `;
 
 const displayerVariants = cva(
@@ -60,43 +61,46 @@ const displayerVariants = cva(
 export type DisplayerProps = PlateContentProps &
   VariantProps<typeof displayerVariants>;
 
-  const Displayer = React.forwardRef<HTMLDivElement, DisplayerProps & { isExpanded?: boolean }>(
-    (
-      {
-        className,
-        disabled,
-        focused,
-        focusRing,
-        size,
-        variant,
-        isExpanded,
-        ...props
-      },
-      ref,
-    ) => {
-      return (
-        <div ref={ref} className="relative w-full">
-          <PlateContentStyledDisplayer
-            className={cn(
-              displayerVariants({
-                disabled,
-                focused,
-                focusRing,
-                size,
-                variant,
-              }),
-              className,
-            )} 
-            disableDefaultStyles
-            readOnly={true}
-            aria-disabled={disabled}
-            isExpanded={isExpanded}
-            {...props}
-          />
-        </div>
-      );
+const Displayer = React.forwardRef<
+  HTMLDivElement,
+  DisplayerProps & { isExpanded?: boolean }
+>(
+  (
+    {
+      className,
+      disabled,
+      focused,
+      focusRing,
+      size,
+      variant,
+      isExpanded,
+      ...props
     },
-  );
+    ref,
+  ) => {
+    return (
+      <div ref={ref} className="relative w-full">
+        <PlateContentStyledDisplayer
+          className={cn(
+            displayerVariants({
+              disabled,
+              focused,
+              focusRing,
+              size,
+              variant,
+            }),
+            className,
+          )}
+          disableDefaultStyles
+          readOnly={true}
+          aria-disabled={disabled}
+          isExpanded={isExpanded}
+          {...props}
+        />
+      </div>
+    );
+  },
+);
 Displayer.displayName = "Displayer";
 
 export { Displayer };
