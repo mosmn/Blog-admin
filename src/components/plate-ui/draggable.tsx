@@ -13,16 +13,16 @@ import { DropTargetMonitor } from "react-dnd";
 import { Icons } from "@/components/icons";
 
 import { Tooltip, TooltipContent, TooltipTrigger } from "./tooltip";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const DrageButton = styled.div`
-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  min-width: 20px;
-  padding: 0;
-}
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    min-width: 20px;
+    padding: 0;
+  }
 `;
 
 export interface DraggableProps
@@ -91,9 +91,9 @@ export interface DraggableProps
 const dragHandle = (
   <Tooltip>
     <DrageButton>
-    <TooltipTrigger>
-      <Icons.dragHandle className="h-4 w-4 text-muted-foreground" />
-    </TooltipTrigger>
+      <TooltipTrigger>
+        <Icons.dragHandle className="h-4 w-4 text-muted-foreground" />
+      </TooltipTrigger>
     </DrageButton>
     <TooltipContent>Drag to move</TooltipContent>
   </Tooltip>
