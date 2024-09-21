@@ -1,4 +1,8 @@
-const url = "http://localhost:8080";
+/* eslint-disable no-undef */
+import dotenv from "dotenv";
+dotenv.config();
+
+const url = process.env.API_URL;
 
 export const login = async (formData) => {
   try {
