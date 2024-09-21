@@ -1,4 +1,4 @@
-const url = import.meta.env.VITE_API_URL;
+const url = "https://blog.api.mosmn.me";
 
 if (!url) {
   console.error(
