@@ -1,5 +1,12 @@
 const url = import.meta.env.VITE_API_URL;
 
+if (!url) {
+  console.error(
+    "API URL is undefined. Please check your environment variables. url :",
+    url,
+  );
+}
+
 export const getPosts = async () => {
   try {
     const response = await fetch(`${url}/blog/posts`);

@@ -1,5 +1,12 @@
 const url = import.meta.env.VITE_API_URL;
 
+if (!url) {
+  console.error(
+    "API URL is undefined. Please check your environment variables. url :",
+    url,
+  );
+}
+
 export const login = async (formData) => {
   try {
     const response = await fetch(`${url}/auth/login`, {
