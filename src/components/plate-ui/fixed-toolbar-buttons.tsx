@@ -30,7 +30,7 @@ import { MarkToolbarButton } from "./mark-toolbar-button";
 import { ModeDropdownMenu } from "./mode-dropdown-menu";
 import { ToolbarGroup } from "./toolbar";
 import { TurnIntoDropdownMenu } from "./turn-into-dropdown-menu";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const ToolbarContainer = styled.div`
   width: 100%;
@@ -54,15 +54,15 @@ const ToolbarItems = styled.div`
   button {
     padding: 0.5rem 1rem;
     font-size: 1rem;
-    background-color: #231F20;
+    background-color: #231f20;
     color: white;
     border-radius: 0.25rem;
     cursor: pointer;
     min-width: 110px;
 
     &:hover {
-      background-color: #DED9D3;
-      color: #231F20;
+      background-color: #ded9d3;
+      color: #231f20;
     }
   }
 

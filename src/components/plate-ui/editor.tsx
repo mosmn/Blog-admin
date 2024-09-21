@@ -5,7 +5,7 @@ import { cva } from "class-variance-authority";
 
 import type { PlateContentProps } from "@udecode/plate-common";
 import type { VariantProps } from "class-variance-authority";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const PlateContentStyled = styled(PlateContent)`
   padding: 30px 60px;
@@ -16,7 +16,8 @@ const PlateContentStyled = styled(PlateContent)`
     outline: none;
   }
 
-  @media (max-width: 768px) { // this will apply to screens that are 768px or less
+  @media (max-width: 768px) {
+    // this will apply to screens that are 768px or less
     padding: 30px 20px;
   }
 `;

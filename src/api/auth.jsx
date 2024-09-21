@@ -1,8 +1,4 @@
-/* eslint-disable no-undef */
-import dotenv from "dotenv";
-dotenv.config();
-
-const url = process.env.API_URL;
+const url = import.meta.env.VITE_API_URL;
 
 export const login = async (formData) => {
   try {

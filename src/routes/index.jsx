@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Login from "../components/Login";
 import Dashboard from "../components/Dashboard";
 import PostEditor from "../components/PostEditor";
@@ -21,7 +26,10 @@ const AppRoutes = () => (
         path="/dashboard/*"
         element={isLoggedIn() ? <Dashboard /> : <Navigate to="/" />}
       />
-      <Route path="/post-editor" element={isLoggedIn() ? <PostEditor /> : <Navigate to="/" />} >
+      <Route
+        path="/post-editor"
+        element={isLoggedIn() ? <PostEditor /> : <Navigate to="/" />}
+      >
         <Route path=":id" element={<PostEditor />} />
       </Route>
       <Route path="*" element={<h1>404 Not Found</h1>} />
